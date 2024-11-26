@@ -24,17 +24,29 @@ This project is part of the CST8209 - Web Programming I course. It implements a 
 
 ## Project Structure
 CST8209_Assignment_3/
+
 │
+
 ├── assets/
+
 │   ├── css/
-│   │   └── calendar.css                    # Styling for the calendar and form
+
+│   │   └── calendar.css                # Styling for the calendar and form
+
 │   ├── js/
-│   │   ├── calendar.js                     # Main calendar logic
-│   │   └── student.js                      # Additional student-specific logic
+
+│   │   ├── calendar.js                 # Main calendar logic
+
+│   │   └── student.js                  # Additional student-specific logic
+
 │
-├── index.htm                               # Main HTML file
-├── references.txt                          # References for resources used in the project
-└── CST8209_Assignment_3_Test_Plan.xlsx     # Test plan for the assignment
+
+├── index.htm                           # Main HTML file
+
+├── references.txt                      # References for resources used in the project
+
+└── CST8209_Assignment_3_Test_Plan.xlsx # Test plan for the assignment
+
 
  
 ## How to Run
