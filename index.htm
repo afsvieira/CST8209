@@ -1,0 +1,58 @@
+<!--
+  -- Student Name: Antonio Felipe Souza Vieira
+  -- Student ID: 041-176-405
+  -- Course: CST8209 - Web Programming I
+  -- Semester: 1
+  -- Assignment: 3 – Calendar of Events – Part 3 
+  -- Date Submitted: November 21th, 2024
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+
+    <!-- jQuery script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/calendar.css">
+  </head>
+  <body>
+    <!-- Event summary (above the calendar) -->
+    <div id="event-summary">
+      <p>Total Events: <span id="event-count">0</span></p>
+    </div>
+
+    <!-- Main container for form and calendar -->
+    <div id="main-container">
+      <!-- Event form container -->
+      <div id="event-form-container">
+        <form id="event-form">
+          <label for="event-date">Event Date:</label>
+          <input type="text" id="event-date" name="event-date" placeholder="Select a date"><br>
+        
+          <label for="event-title">Event Title:</label>
+          <input type="text" id="event-title" name="event-title" placeholder="Enter the title"><br>
+        
+          <label for="event-description">Event Description:</label>
+          <textarea id="event-description" name="event-description" placeholder="Enter a description"></textarea><br>
+        
+          <button type="submit">Submit</button>
+          <button type="button" id="clear-button">Clear</button>
+        </form>
+      </div>
+
+      <!-- Calendar -->
+      <div id="calendar"></div>
+    </div>
+
+    <script src="assets/js/calendar.js"></script>
+    <script src="assets/js/student.js"></script>
+  </body>
+</html>
+

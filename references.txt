@@ -1,0 +1,16 @@
+References:
+
+Mozilla Developer Network. (n.d.). Document Object Model (DOM). Retrieved November 8, 2024, from https://developer.mozilla.org/en-US/docs/Web/API/Document
+
+Valentino, G. (2024). Back to the Basics: How to Generate a Table with JavaScript. Valentinog.com. Retrieved November 8, 2024, from https://www.valentinog.com/blog/html-table/
+
+Mozilla Developer Network. (n.d.). The Table Element. Retrieved November 8, 2024, from https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
+
+W3Schools. (n.d.). Table Object. Retrieved November 8, 2024, from https://www.w3schools.com/jsref/dom_obj_table.asp
+
+W3Schools. (n.d.). CSS Styling Examples. Retrieved November 21, 2024, from https://www.w3schools.com/css/
+
+Stack Overflow. (2024). Center align error messages below form fields. Retrieved November 21, 2024, from https://stackoverflow.com/
+
+jQuery Documentation. (n.d.). jQuery UI Overview. Retrieved November 21, 2024, from https://jqueryui.com/
+
