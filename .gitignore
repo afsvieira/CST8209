@@ -1,0 +1,38 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/editor specific files
+.idea/
+.vscode/
+*.iml
+
+# Ignore logs
+*.log
+
+# Ignore temporary files and caches
+*.tmp
+*.cache
+*.bak
+*.swp
+
+# Ignore OS-specific files
+__MACOSX/
+
+# Ignore Excel temporary files
+~$*.xlsx
+
+# Ignore build artifacts
+/dist/
+/build/
+
+# Ignore npm dependencies if used in the project
+node_modules/
+
+# Ignore compiled files
+*.class
+*.pyc
+
+# Ignore additional unwanted files
+*.zip
+*.tar.gz
