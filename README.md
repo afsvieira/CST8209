@@ -37,8 +37,6 @@ CST8209_Assignment_3/
 
 │   │   ├── calendar.js                 # Main calendar logic
 
-│   │   └── student.js                  # Additional student-specific logic
-
 │
 
 ├── index.htm                           # Main HTML file
