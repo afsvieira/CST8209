@@ -10,11 +10,6 @@ body {
 
 /* Main container for form and calendar */
 #main-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 90%;
-  margin: 20px auto;
   gap: 20px;
 }
 
@@ -60,54 +55,9 @@ th {
   color: gray;
 }
 
-/* Event form */
+/* Event form container */
 #event-form-container {
-  flex: 1;
   padding: 10px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#event-form {
-  margin: 0 auto;
-}
-
-#event-form label {
-  display: block;
-  font-weight: bold;
-  margin: 10px 0 5px;
-}
-
-#event-form input,
-#event-form textarea,
-#event-form button {
-  width: 90%;
-  margin: 5px auto;
-  padding: 10px;
-  display: block;
-  font-size: 1rem;
-}
-
-#event-form textarea {
-  resize: none;
-}
-
-#event-form button {
-  width: 45%;
-  margin: 10px 5px;
-  cursor: pointer;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-#event-form button:hover {
-  background-color: #0056b3;
 }
 
 /* Error message styling */
@@ -119,5 +69,9 @@ th {
   display: block; 
 }
 
-
-
+#clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}

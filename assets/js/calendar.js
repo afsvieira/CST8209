@@ -3,66 +3,74 @@
  * Student ID: 041-176-405
  * Course: CST8209 - Web Programming I
  * Semester: 1
- * Assignment: 3 – Calendar of Events – Part 3 
- * Date Submitted: November 21th, 2024
+ * Assignment: 4 – Calendar of Events – Part 4 
+ * Date Submitted: November 28th, 2024
  */
 
-// declare an object Calendar
+// Declare a Calendar object
 function Calendar(elem) {
-
-  // jQuery element in which to display the calendar
+  // jQuery element to display the calendar
   this.elem = $(elem);
 
-  // array containing list of names of the days of the week 
+  // Array of day names for the calendar header
   this.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  
-  /** Returns the month name of the year for a given month index.
-   * @param monthIndex {number} zero-based index of the month of the year (0 = January, 11 = December)
-   * @returns {string} the name of the given month
+
+  /**
+   * Get the name of the month based on a zero-based index.
+   * @param {number} monthIndex - Index of the month (0 = January, 11 = December)
+   * @returns {string} Name of the month
    */
-  this.getMonth = function(monthIndex) { 
+  this.getMonth = function (monthIndex) {
     const months = [
-      "January", "February", "March", "April", "May", 
-      "June", "July", "August", "September", "October", 
+      "January", "February", "March", "April", "May",
+      "June", "July", "August", "September", "October",
       "November", "December"
     ];
     return months[monthIndex] || "Unknown";
-  }
+  };
 
-  /** Returns the number of days in the month for a given zero-based month index and year. */
-  this.getDaysInMonth = function(monthIndex, year) {
-    if (typeof monthIndex !== 'number' || monthIndex < 0 || monthIndex > 11 || typeof year !== 'number') {
+  /**
+   * Get the number of days in a specific month of a given year.
+   * @param {number} monthIndex - Zero-based month index
+   * @param {number} year - Year to check
+   * @returns {number} Number of days in the month
+   */
+  this.getDaysInMonth = function (monthIndex, year) {
+    if (typeof monthIndex !== "number" || monthIndex < 0 || monthIndex > 11 || typeof year !== "number") {
       return -1;
     }
 
     const isLeapYear = (year) => (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0));
-
     const days = [31, isLeapYear(year) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     return days[monthIndex];
-  }
+  };
 
-  this.display = function(displayDate = new Date()) {
-    // Clear existing content
+  /**
+   * Display the calendar for a specific date.
+   * @param {Date} displayDate - Date to display (defaults to today)
+   */
+  this.display = function (displayDate = new Date()) {
+    // Clear the calendar container
     this.elem.empty();
 
+    // Get the number of days in the current month
     const daysInMonth = this.getDaysInMonth(displayDate.getMonth(), displayDate.getFullYear());
-
     const days = Array.from({ length: daysInMonth }, (_, i) =>
       new Date(displayDate.getFullYear(), displayDate.getMonth(), i + 1)
     );
 
-    // Create the calendar structure
-    const table = $("<table></table>");
+    // Create the calendar table
+    const table = $("<table class='table table-bordered'></table>");
     const thead = $("<thead></thead>");
     const tbody = $("<tbody></tbody>");
 
-    // Create header row
+    // Header row with navigation buttons
     const headerRow = $("<tr></tr>");
 
-    // Previous Month button
+    // Previous month button
     $("<td></td>")
       .append(
-        $("<button></button>")
+        $("<button class='btn btn-secondary'></button>")
           .text("<<")
           .on("click", () => {
             const prevMonthDate = new Date(displayDate.getFullYear(), displayDate.getMonth() - 1, 1);
@@ -71,18 +79,18 @@ function Calendar(elem) {
       )
       .appendTo(headerRow);
 
-    // Month and Year display
+    // Month and year display
     $("<td></td>")
       .attr("colspan", 5)
       .append(
-        $("<h1></h1>").text(`${this.getMonth(displayDate.getMonth())} ${displayDate.getFullYear()}`)
+        $("<h5></h5>").text(`${this.getMonth(displayDate.getMonth())} ${displayDate.getFullYear()}`)
       )
       .appendTo(headerRow);
 
-    // Next Month button
+    // Next month button
     $("<td></td>")
       .append(
-        $("<button></button>")
+        $("<button class='btn btn-secondary'></button>")
           .text(">>")
           .on("click", () => {
             const nextMonthDate = new Date(displayDate.getFullYear(), displayDate.getMonth() + 1, 1);
@@ -93,50 +101,53 @@ function Calendar(elem) {
 
     thead.append(headerRow);
 
-    // Day names row
+    // Row for day names
     const dayNamesRow = $("<tr></tr>");
     this.dayNames.forEach((dayName) =>
-      $("<th></th>").text(dayName).appendTo(dayNamesRow)
+      $("<th class='text-center'></th>").text(dayName).appendTo(dayNamesRow)
     );
     thead.append(dayNamesRow);
 
     table.append(thead);
 
-    // Generate calendar days
+    // Generate the calendar days
     let weekRow = $("<tr></tr>");
 
+    // Empty cells before the first day of the month
     for (let i = 0; i < days[0].getDay(); i++) {
       $("<td></td>").appendTo(weekRow);
     }
 
+    // Fill in the days of the month
     days.forEach((currentDay, i) => {
       if (currentDay.getDay() === 0 && i !== 0) {
         tbody.append(weekRow);
         weekRow = $("<tr></tr>");
       }
-    
+
       const dayCell = $("<td></td>")
-        .addClass("day")
+        .addClass("day text-center")
         .text(currentDay.getDate());
-    
-      
+
+      // Highlight today's date
       const today = new Date();
       if (
         currentDay.getDate() === today.getDate() &&
         currentDay.getMonth() === today.getMonth() &&
         currentDay.getFullYear() === today.getFullYear()
       ) {
-        dayCell.addClass("today"); 
+        dayCell.addClass("bg-success text-white");
       }
-    
-      
+
+      // Highlight weekends
       if (currentDay.getDay() === 0 || currentDay.getDay() === 6) {
-        dayCell.addClass("weekend"); 
+        dayCell.addClass("bg-light text-muted");
       }
-    
+
       weekRow.append(dayCell);
     });
 
+    // Empty cells after the last day of the month
     for (let i = days[days.length - 1].getDay() + 1; i < 7; i++) {
       $("<td></td>").appendTo(weekRow);
     }
@@ -144,129 +155,96 @@ function Calendar(elem) {
     tbody.append(weekRow);
     table.append(tbody);
 
-    // Append table to calendar container
+    // Append the table to the calendar container
     this.elem.append(table);
   };
 }
 
-// declare a instance of Calendar
+// Create an instance of Calendar
 const cal = new Calendar("#calendar");
-
-// call the display() method
 cal.display();
 
 // Global variable to store events
 var events = [];
 
 $(document).ready(function () {
-  function updateEventCount() {
-    $("#event-count").text(events.length);
+  // Helper function to validate dates
+  function isValidDate(dateString) {
+    const [year, month, day] = dateString.split("-").map(Number);
+
+    if (!year || !month || !day) return false;
+
+    // Check if the date is valid
+    const date = new Date(year, month - 1, day);
+    return (
+      date.getFullYear() === year &&
+      date.getMonth() === month - 1 &&
+      date.getDate() === day
+    );
   }
-  
-  // Initialize datepicker
+
+  // Initialize the datepicker
   $("#event-date").datepicker({
-    dateFormat: "yy-mm-dd", 
+    dateFormat: "yy-mm-dd",
     onSelect: function () {
       removeErrorMessage($(this));
-    }
+      updateProgress();
+    },
   });
 
-  // Add validation messages dynamically
+  // Add error message dynamically
   const addErrorMessage = (field, message) => {
     if (!field.next(".error-message").length) {
       field.after(`<span class="error-message" style="color: red; font-size: 0.9em;">${message}</span>`);
     }
   };
 
+  // Remove error message
   const removeErrorMessage = (field) => {
     field.next(".error-message").remove();
   };
 
-  // Validate on blur
-  $("#event-date").on("blur", function () {
-    const value = $(this).val();
-    if (!value || !isValidDate(value)) {
-      addErrorMessage($(this), "The event date is invalid.");
-    } else {
-      removeErrorMessage($(this));
-    }
-  });
+  // Update the progress bar
+  const updateProgress = () => {
+    const formFields = $("#event-form input, #event-form textarea");
+    const progressBar = $("#form-progress");
+    const filledFields = formFields.filter(function () {
+      return $(this).val().trim() !== "";
+    }).length;
 
-  $("#event-title").on("blur", function () {
-    const value = $(this).val().trim();
-    if (value.length < 3) {
-      addErrorMessage($(this), "The event title must have at least 3 characters.");
-    } else {
-      removeErrorMessage($(this));
-    }
-  });
+    const progress = (filledFields / formFields.length) * 100;
+    progressBar.css("width", `${progress}%`).attr("aria-valuenow", progress);
+  };
 
-  // Event handler for form submission
+  $("#event-form input, #event-form textarea").on("input", updateProgress);
+
+  // Handle form submission
   $("#event-form").on("submit", function (e) {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
 
-    // Get form values
     const eventDate = $("#event-date").val();
     const eventTitle = $("#event-title").val().trim();
-    const eventDescription = $("#event-description").val().trim();
 
-    // Validate form inputs
-    let isValid = true;
-
-    if (!eventDate || !isValidDate(eventDate)) {
-      addErrorMessage($("#event-date"), "The event date is invalid.");
-      console.log("The event date is invalid.");
-      isValid = false;
-    } else {
-      removeErrorMessage($("#event-date"));
-    }
-
+    // Validation: Title must have at least 3 characters
     if (!eventTitle || eventTitle.length < 3) {
       addErrorMessage($("#event-title"), "The event title must have at least 3 characters.");
-      console.log("The event title must have at least 3 characters.");
-      isValid = false;
+      return;
     } else {
       removeErrorMessage($("#event-title"));
     }
 
-    if (!isValid) {
-      return; // Stop submission if validation fails
+    // Validation: Date must be valid
+    if (!eventDate || !isValidDate(eventDate)) {
+      addErrorMessage($("#event-date"), "The event date is invalid.");
+      return;
+    } else {
+      removeErrorMessage($("#event-date"));
     }
 
-    // If valid, add event to the global array
-    const eventString = `Date: ${eventDate}, Title: ${eventTitle}, Description: ${eventDescription}`;
-    events.push(eventString);
-
-    // Update the event count
-    updateEventCount();
-
-    // Output events to the console
-    console.log("Current events:", events);
-
-    // Display success message
-    alert("Event added successfully!");
-
-    // Clear the form
+    events.push({ eventDate, eventTitle });
+    $("#event-count").text(events.length);
     $("#event-form")[0].reset();
-    $(".error-message").remove(); // Clear error messages
+    updateProgress();
+    cal.display();
   });
-
-  // Clear button handler
-  $("#clear-button").on("click", function () {
-    $("#event-form")[0].reset(); // Clear the form fields
-    $(".error-message").remove(); // Clear error messages
-  });
-
-  // Helper function to validate dates
-  function isValidDate(dateString) {
-    const date = new Date(dateString);
-    if (isNaN(date.getTime())) {
-      return false;
-    }
-    const [year, month, day] = dateString.split("-").map(Number);
-    const daysInMonth = new Date(year, month, 0).getDate();
-    return day <= daysInMonth;
-  }
 });
-
-

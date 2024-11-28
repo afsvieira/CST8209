@@ -23,7 +23,7 @@ This project is part of the CST8209 - Web Programming I course. It implements a 
 - **jQuery UI**: For the datepicker component.
 
 ## Project Structure
-CST8209_Assignment_3/
+CST8209_Assignment_4/
 │
 ├── assets/
 │   ├── css/
@@ -54,6 +54,6 @@ This project was created by **Antonio Felipe Souza Vieira** as part of the **CST
 
 - **Student Name**: Antonio Felipe Souza Vieira  
 - **Student ID**: 041-176-405  
-- **Date Submitted**: November 21st, 2024
+- **Date Submitted**: November 28th, 2024
 
 

@@ -14,3 +14,8 @@ Stack Overflow. (2024). Center align error messages below form fields. Retrieved
 
 jQuery Documentation. (n.d.). jQuery UI Overview. Retrieved November 21, 2024, from https://jqueryui.com/
 
+MDN Web Docs. (n.d.). Basic animations using Canvas. Mozilla Foundation. Retrieved November 28, 2024, from https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations
+
+W3Schools. (n.d.). Canvas Clock. W3Schools. Retrieved November 28, 2024, from https://www.w3schools.com/graphics/canvas_clock.asp
+
+
