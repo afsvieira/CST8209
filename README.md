@@ -35,6 +35,7 @@ CST8209_Assignment_4/
 │   ├── js/
 
 │   │   ├── calendar.js                 # Main calendar logic
+│   │   ├── clock.js                    # Main clock logic
 
 │
 
